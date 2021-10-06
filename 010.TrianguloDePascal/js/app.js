@@ -41,7 +41,6 @@ btntriangle.addEventListener('click', () => {
     tbody.innerHTML = texto;
 });
 
-
 function combina(p, q) {
     return factorial(p) / (factorial(q) * factorial(p - q));
 }
