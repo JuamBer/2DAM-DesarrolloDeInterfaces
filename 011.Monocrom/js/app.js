@@ -48,12 +48,14 @@ function filltable(table, valores,total,mitad) {
             default: break;
         }
     }else{
-        console.log("valores[1]"+valores[1]);
-        switch (valores[1]) {
+        console.log("valores[1]: "+valores[1]);
+        switch (parseInt(valores[1])) {
             case 1:
                     total = (table.length - 1)/2;
                     mitad = (total / 2)/2;
-                    valores.splice(1, 1);
+                    console.log("valores[1]: (antes del splice)" + parseInt(valores[1]));
+                    valores.splice(0, 1);
+                    console.log("valores[1]: (despues del splice)" + parseInt(valores[1]));
                     filltable(table,valores,total,mitad);
                 break;
             case 2:
