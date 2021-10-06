@@ -12,7 +12,7 @@ function createWindow() {
     })
     win.setMenu(null)
     // y carga el index.html de la aplicación.
-    win.loadFile('index.html')
+    win.loadFile('pages/index.html')
     //para mostrar en la ventana la herramientas de desarrollo de chrome:
     //win.webContents.openDevTools()
 }
