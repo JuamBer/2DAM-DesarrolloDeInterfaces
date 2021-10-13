@@ -104,6 +104,20 @@ btnadd.addEventListener('click', () => {
     dni.value = "";
     name.value = "";
     phone.value = "";
+    
+    btnfirst.disabled = true;
+    btnfirst.style.background = "#2F2F2F";
+    btnnext.disabled = true;
+    btnnext.style.background = "#2F2F2F";
+    btnbefore.disabled = true;
+    btnbefore.style.background = "#2F2F2F";
+    btnlast.disabled = true;
+    btnlast.style.background = "#2F2F2F";
+
+    btndelete.disabled = true;
+    btndelete.style.background = "#2F2F2F";
+    btnsave.disabled = true;
+    btnsave.style.background = "#2F2F2F";
 
     btnadd.style.display = 'none';
     btnaddred.style.display = 'inline';
@@ -115,11 +129,34 @@ btnaddred.addEventListener('click', () => {
     nameval = name.value;
     phoneval = phone.value;
 
-    clients.push({
-        "dni": "" + dnival + "",
-        "nombre": "" + nameval + "",
-        "telefono": "" + phoneval + ""
-    });
+    btnfirst.disabled = false;
+    btnfirst.style.background = "#6eb4f7";
+    btnnext.disabled = false;
+    btnnext.style.background = "#6eb4f7";
+    btnbefore.disabled = false;
+    btnbefore.style.background = "#6eb4f7";
+    btnlast.disabled = false;
+    btnlast.style.background = "#6eb4f7";
+
+    btndelete.disabled = false;
+    btndelete.style.background = "#6eb4f7";
+    btnsave.disabled = false;
+    btnsave.style.background = "#6eb4f7";
+
+    btnadd.style.display = 'none';
+    btnaddred.style.display = 'inline';
+
+    if (dnival != "" && nameval != "" && phoneval != ""){
+        clients.push({
+            "dni": "" + dnival + "",
+            "nombre": "" + nameval + "",
+            "telefono": "" + phoneval + ""
+        });
+        console.log("User Added");
+    }else{
+        console.log("Cannot enter empty values");
+    }
+    
 
     pos=clients.length-1;
 
@@ -129,10 +166,10 @@ btnaddred.addEventListener('click', () => {
         console.log(error);
     }
 
-    console.log("User Added");
+   
 });
 
-function loadClient(){
+function loadClient() {
     dni.value = clients[pos].dni;
     name.value = clients[pos].nombre;
     phone.value = clients[pos].telefono; 
