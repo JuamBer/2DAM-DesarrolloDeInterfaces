@@ -6,6 +6,7 @@ let clients = new Array();
 clients = JSON.parse(file);
 
 let pos = 0;
+let key = 1;
 
 let dni = document.getElementById("dni");
 let name = document.getElementById("name");
@@ -18,10 +19,7 @@ let btnlast = document.getElementById("btnlast");
 
 let btndelete = document.getElementById("btndelete");
 let btnadd = document.getElementById("btnadd");
-let btnaddred = document.getElementById("btnaddred");
 let btnsave = document.getElementById("btnsave");
-
-btnaddred.style.display = 'none';
 
 loadClient();
 
@@ -96,83 +94,93 @@ btndelete.addEventListener('click', () => {
 });
 
 btnadd.addEventListener('click', () => {
-    console.log("AddEventListener Add UserBlue");
-    dnival = dni.value;
-    nameval = name.value;
-    phoneval = phone.value;
-
-    dni.value = "";
-    name.value = "";
-    phone.value = "";
+    console.log("AddEventListener Add User");
     
-    btnfirst.disabled = true;
-    btnfirst.style.background = "#2F2F2F";
-    btnnext.disabled = true;
-    btnnext.style.background = "#2F2F2F";
-    btnbefore.disabled = true;
-    btnbefore.style.background = "#2F2F2F";
-    btnlast.disabled = true;
-    btnlast.style.background = "#2F2F2F";
+    if ((key % 2) == 0) {
+        key++;
+        dnival = dni.value;
+        nameval = name.value;
+        phoneval = phone.value;
 
-    btndelete.disabled = true;
-    btndelete.style.background = "#2F2F2F";
-    btnsave.disabled = true;
-    btnsave.style.background = "#2F2F2F";
+        btnfirst.disabled = false;
+        btnfirst.classList.remove("btn-default");
+        btnfirst.classList.add("btn-primary");
+        btnnext.disabled = false;
+        btnnext.classList.remove("btn-default");
+        btnnext.classList.add("btn-primary");
+        btnbefore.disabled = false;
+        btnbefore.classList.remove("btn-default");
+        btnbefore.classList.add("btn-primary");
+        btnlast.disabled = false;
+        btnlast.classList.remove("btn-default");
+        btnlast.classList.add("btn-primary");
 
-    btnadd.style.display = 'none';
-    btnaddred.style.display = 'inline';
-});
+        btndelete.disabled = false;
+        btndelete.classList.remove("btn-default");
+        btndelete.classList.add("btn-primary");
+        btnsave.disabled = false;
+        btnsave.classList.remove("btn-default");
+        btnsave.classList.add("btn-primary");
 
-btnaddred.addEventListener('click', () => {
-    console.log("AddEventListener AddRed User");
-    dnival = dni.value;
-    nameval = name.value;
-    phoneval = phone.value;
+        btnadd.classList.remove("btn-negative");
+        btnadd.classList.add("btn-primary");
 
-    btnfirst.disabled = false;
-    btnfirst.style.background = "#6eb4f7";
-    btnnext.disabled = false;
-    btnnext.style.background = "#6eb4f7";
-    btnbefore.disabled = false;
-    btnbefore.style.background = "#6eb4f7";
-    btnlast.disabled = false;
-    btnlast.style.background = "#6eb4f7";
+        if (dnival != "" && nameval != "" && phoneval != "") {
+            clients.push({
+                "dni": "" + dnival + "",
+                "nombre": "" + nameval + "",
+                "telefono": "" + phoneval + ""
+            });
+            console.log("User Added");
+        } else {
+            console.log("Cannot enter empty values");
+        }
 
-    btndelete.disabled = false;
-    btndelete.style.background = "#6eb4f7";
-    btnsave.disabled = false;
-    btnsave.style.background = "#6eb4f7";
+        pos = clients.length - 1;
 
-    btnadd.style.display = 'none';
-    btnaddred.style.display = 'inline';
-
-    if (dnival != "" && nameval != "" && phoneval != ""){
-        clients.push({
-            "dni": "" + dnival + "",
-            "nombre": "" + nameval + "",
-            "telefono": "" + phoneval + ""
-        });
-        console.log("User Added");
+        try {
+            loadClient();
+        } catch (error) {
+            console.log(error);
+        }
     }else{
-        console.log("Cannot enter empty values");
+        key++;
+        dnival = dni.value;
+        nameval = name.value;
+        phoneval = phone.value;
+
+        dni.value = "";
+        name.value = "";
+        phone.value = "";
+
+        btnfirst.disabled = true;
+        btnfirst.classList.remove("btn-primary");
+        btnfirst.classList.add("btn-default");
+        btnnext.disabled = true;
+        btnnext.classList.remove("btn-primary");
+        btnnext.classList.add("btn-default");
+        btnbefore.disabled = true;
+        btnbefore.classList.remove("btn-primary");
+        btnbefore.classList.add("btn-default");
+        btnlast.disabled = true;
+        btnlast.classList.remove("btn-primary");
+        btnlast.classList.add("btn-default");
+
+        btndelete.disabled = true;
+        btndelete.classList.remove("btn-primary");
+        btndelete.classList.add("btn-default");
+        btnsave.disabled = true;
+        btnsave.classList.remove("btn-primary");
+        btnsave.classList.add("btn-default");
+
+        btnadd.classList.remove("btn-primary");
+        btnadd.classList.add("btn-negative");
     }
-    
 
-    pos=clients.length-1;
-
-    try {
-        loadClient();
-    } catch (error) {
-        console.log(error);
-    }
-
-   
 });
 
 function loadClient() {
     dni.value = clients[pos].dni;
     name.value = clients[pos].nombre;
     phone.value = clients[pos].telefono; 
-    btnadd.style.display = 'inline';
-    btnaddred.style.display = 'none';
 }
