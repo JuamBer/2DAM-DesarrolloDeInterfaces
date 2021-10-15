@@ -1,0 +1,14 @@
+.center{
+    text-align: center;
+    display: inline;
+};
+body{
+    color:black;
+}
+.clientwindow {
+    padding: 2.5%;
+    width: 50%;
+}
+.imgResult img{
+    height: 100vh;
+}

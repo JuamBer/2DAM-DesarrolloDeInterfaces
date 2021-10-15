@@ -1,0 +1,16 @@
+{
+  "name": "imagenes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+     "@electron/remote": "^2.0.1",
+     "elctron": "0.0.1-security",
+     "electron": "^15.2.0"
+  }
+}
