@@ -9,34 +9,29 @@
 </head>
 
 <body>
-    <div class="window">
-        <div class="window-content">
-            <div class="pane-group">
-                <div class="pane-sm sidebar">
-                    <div class="player1">
-                        <h2>Jugador 1</h2>
+    <div class="hanged">
+                <div class="hanged-sidebar">
+                    <div>
+                        <h2>Palabra a adivinar</h2>
                         <input type="text" id="word">
                     </div>
-                    <div class="player2">
-                        <h2>Jugador 2</h2>
+                    <div>
+                        <h2>Probar letra</h2>
                         <input type="text" id="letter">
                     </div>
-                    <div class="result">
+                    <div>
                         <p id="result"></p>
+                        <button class="btn btn-primary" id="btn">REINICIAR</button>
                     </div>
-                    <button id="btn">Reiniciar</button>
                 </div>
-                <div class="pane">
-                    <div class="imgResult">
+                <div class="hanged-main">
+                    <div class="imgresult">
                         <img id="img" src="../img/0.png" alt="">
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
     <br>
-    <!--<script src="../js/app.js"></script>-->
-    <script src="../js/appArrays.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 
 </html>

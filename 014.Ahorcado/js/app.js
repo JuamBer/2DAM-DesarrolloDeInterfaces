@@ -3,59 +3,85 @@ const {
 } = require('@electron/remote')
 
 let word = document.getElementById("word");
-let tryletter = document.getElementById("tryletter");
+let letter = document.getElementById("letter");
 let result = document.getElementById("result");
+let btn = document.getElementById("btn");
 let img = document.getElementById("img");
 
 let wordvalue;
-let hidenword;
+let arraywordvalue = [];
+let hiddenword;
+let arrayhiddenword = [];
 let wordlenght;
+let lettervalue;
 let srcimg = 0;
-//tryletter.disabled="true";
+letter.disabled=true;
 
 word.addEventListener('keyup',(e)=>{
+    console.log("-----Enter Word-----\n");
     if(e.key=="Enter"){
         wordvalue = word.value;
+        arraywordvalue = Array.from(wordvalue);
         wordlenght = wordvalue.length;
-        console.log("resultvalue: " + wordvalue);
-        console.log("wordlenght: " + wordlenght);
+        console.log("WordValue: " + wordvalue);
+        console.log("WordLenght: " + wordlenght);
         createWord();
+        letter.focus();
     }
 });
-tryletter.addEventListener('keyup', (e) => {
+letter.addEventListener('keyup', (e) => {
+    console.log("-----Enter Letter-----\n");
     if (e.key == "Enter") {
-        checkLetter();
+        lettervalue = letter.value;
+        console.log("Letter: " + lettervalue);
+        checkLetter(lettervalue);
+        letter.value = "";
     }
 });
-function checkLetter(){
-    console.log("-----CheckLetter-----");
-    let isLetter = false;
-    let letter = tryletter.value;
-    console.log("Letter: "+letter)
+
+btn.addEventListener('click', () => {
+   wordvalue = null;
+   arraywordvalue = [];
+   hiddenword = null;
+   arrayhiddenword = [];
+   wordlenght = null;
+   lettervalue = null;
+   srcimg = 0;
+   result.innerHTML=hiddenword;
+   letter.value = "";
+   word.value="";
+   letter.disabled = true;
+   word.disabled = false;
+   word.focus();
+
+});
+
+function checkLetter(lettervalue) {
+    console.log("-----CheckLetter-----\n");
+    let isletter = false;
     for (let i = 0; i < wordlenght; i++) {
-        console.log("resultvalue[i]:"+resultvalue[i]);
-        if (resultvalue[i] == letter) {
-            isLetter=true;
-            console.log("mediumresult[i]: "+mediumresult[i]);
-            let carac = resultvalue.substring(i, i + 1);
-            mediumresult.replace();
-            console.log("mediumresult[i]: " + mediumresult[i]);
-            result.innerHTML = mediumresult;
+        if (arraywordvalue[i].toUpperCase() == lettervalue.toUpperCase()) {
+            isletter=true;
+            arrayhiddenword[i] = arraywordvalue[i];
+
+            let start = hiddenword.substring(0, i);
+            let char = wordvalue.substring(i, i + 1);
+            let end = hiddenword.substring(i + 1, wordlenght);
+            hiddenword = start+char+end;
         }
     }
-    console.log("ResultValue: "+resultvalue);
-    console.log("MediumResult: " + mediumresult);
+    result.innerHTML = hiddenword;
 
-    if (mediumresult == resultvalue){
+    if (hiddenword == wordvalue) {
         dialog.showErrorBox("Victory", "Victory")
     }
-
-    if (isLetter == false){
+    if (isletter == false){
         nextImg();
     }
 
 }
 function nextImg(){
+    console.log("-----Next Img-----\n");
     srcimg++;
 
     if (srcimg>6){
@@ -67,18 +93,21 @@ function nextImg(){
 
 }
 
-
 function createWord(){
-    console.log("-----creareWord-----")
+    console.log("-----Create Word-----\n");
     
-    //tryletter.disabled="false";
+    letter.disabled=false;
+    word.disabled = true;
     hiddenword = "";
     for (let i = 0; i < wordlenght; i++) {
-            console.log("_");
-            hiddenword += "_";
+            if (arraywordvalue[i]==" ") {
+                hiddenword += " ";
+            }else{
+                hiddenword += "_";
+            }
+            
     }
-
+    arrayhiddenword = Array.from(hiddenword);
     result.innerHTML = hiddenword;
-    console.log("ResultValue: " + wordvalue);
-    console.log("MediumResult: " + hiddenword);
+    console.log("HiddenWord: " + hiddenword);
 }
