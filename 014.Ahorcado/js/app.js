@@ -7,17 +7,17 @@ let tryletter = document.getElementById("tryletter");
 let result = document.getElementById("result");
 let img = document.getElementById("img");
 
-let resultvalue;
-let mediumresult;
+let wordvalue;
+let hidenword;
 let wordlenght;
 let srcimg = 0;
 //tryletter.disabled="true";
 
 word.addEventListener('keyup',(e)=>{
     if(e.key=="Enter"){
-        resultvalue = word.value;
-        wordlenght = resultvalue.length;
-        console.log("resultvalue: " + resultvalue);
+        wordvalue = word.value;
+        wordlenght = wordvalue.length;
+        console.log("resultvalue: " + wordvalue);
         console.log("wordlenght: " + wordlenght);
         createWord();
     }
@@ -72,13 +72,13 @@ function createWord(){
     console.log("-----creareWord-----")
     
     //tryletter.disabled="false";
-    mediumresult = "";
+    hiddenword = "";
     for (let i = 0; i < wordlenght; i++) {
             console.log("_");
-            mediumresult  += "_";
+            hiddenword += "_";
     }
 
-    result.innerHTML = mediumresult;
-    console.log("ResultValue: " + resultvalue);
-    console.log("MediumResult: " + mediumresult);
+    result.innerHTML = hiddenword;
+    console.log("ResultValue: " + wordvalue);
+    console.log("MediumResult: " + hiddenword);
 }
