@@ -8,6 +8,8 @@ let result = document.getElementById("result");
 let btn = document.getElementById("btn");
 let img = document.getElementById("img");
 
+
+
 let wordvalue;
 let arraywordvalue = [];
 let hiddenword;
@@ -19,6 +21,7 @@ letter.disabled=true;
 
 word.addEventListener('keyup',(e)=>{
     console.log("-----Enter Word-----\n");
+
     if(e.key=="Enter"){
         wordvalue = word.value;
         arraywordvalue = Array.from(wordvalue);
@@ -73,7 +76,12 @@ function checkLetter(lettervalue) {
     result.innerHTML = hiddenword;
 
     if (hiddenword == wordvalue) {
-        dialog.showErrorBox("Victory", "Victory")
+            dialog.showMessageBox({
+                message: 'Victory !',
+                type: 'info',
+                buttons: ['Okay'],
+                title: 'Ahorcado'
+            });
     }
     if (isletter == false){
         nextImg();
@@ -85,7 +93,12 @@ function nextImg(){
     srcimg++;
 
     if (srcimg>6){
-        dialog.showErrorBox("Game Over", "Game Over")
+           dialog.showMessageBox({
+               message: 'Game Over !',
+               type: 'info',
+               buttons: ['Okay'],
+               title: 'Ahorcado'
+           });
     }
     let src = "../img/"+ srcimg + ".png";
     img.src = src;
