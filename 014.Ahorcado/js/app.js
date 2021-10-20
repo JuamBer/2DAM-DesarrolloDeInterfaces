@@ -8,8 +8,6 @@ let result = document.getElementById("result");
 let btn = document.getElementById("btn");
 let img = document.getElementById("img");
 
-
-
 let wordvalue;
 let arraywordvalue = [];
 let hiddenword;
@@ -92,8 +90,8 @@ function checkLetter(lettervalue) {
     if (isletter == false){
         nextImg();
     }
-
 }
+
 function nextImg(){
     console.log("-----Next Img-----\n");
     srcimg++;
@@ -108,8 +106,6 @@ function nextImg(){
     }
     let src = "../img/"+ srcimg + ".png";
     img.src = src;
-
-
 }
 
 function createWord(){
