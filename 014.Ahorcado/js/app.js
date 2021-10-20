@@ -18,7 +18,7 @@ let srcimg = 0;
 
 letter.disabled=true;
 
-word.addEventListener('keyup',(e)=>{
+word.addEventListener('keydown', (e) => {
     console.log("-----Enter Word-----\n");
 
     if(e.key=="Enter"){
@@ -31,7 +31,7 @@ word.addEventListener('keyup',(e)=>{
         letter.focus();
     }
 });
-letter.addEventListener('keyup', (e) => {
+letter.addEventListener('keydown', (e) => {
     console.log("-----Enter Letter-----\n");
     if (e.key == "Enter") {
         lettervalue = letter.value;
