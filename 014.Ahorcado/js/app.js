@@ -17,6 +17,7 @@ let arrayhiddenword = [];
 let wordlenght;
 let lettervalue;
 let srcimg = 0;
+
 letter.disabled=true;
 
 word.addEventListener('keyup',(e)=>{
@@ -39,6 +40,11 @@ letter.addEventListener('keyup', (e) => {
         console.log("Letter: " + lettervalue);
         checkLetter(lettervalue);
         letter.value = "";
+    }else{
+        lettervalue = letter.value;
+        if (lettervalue.length > 1) {
+            letter.value = lettervalue.substring(0,1);
+        }
     }
 });
 
