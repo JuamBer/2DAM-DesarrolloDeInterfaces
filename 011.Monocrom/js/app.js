@@ -1,4 +1,4 @@
-let input = document.getElementById("input");
+let input = lldocument.getElementById("input");
 let btn = document.getElementById("btn");
 let pantalla = document.getElementById("screen");
 const num = 16;

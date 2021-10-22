@@ -44,6 +44,7 @@ for (let i = 0; i < 16; i++) {
     images[i] = new Array(4);
     
 }
+
 function createPuzzle(){
     for (let i = 0; i < images.length; i++) {
         if (i == 0) {
