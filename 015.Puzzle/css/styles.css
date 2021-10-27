@@ -1,36 +1,3 @@
-.hanged {
-    width: 100%;
-    padding: 2.5%;
-        display: inline-flex;
-
-}
-.hanged .hanged-sidebar {
-    width: 35%;
-    padding: 5%;
-}
-
-.hanged .hanged-sidebar input{
-    width: 100%;
-    padding: 2.5%;
-}
-
-.hanged .hanged-sidebar button {
-    width: 100%;
-    padding: 2.5%;
-}
-.hanged .hanged-sidebar p#result {
-    width: 100%;
-    font-size: 40px;
-    letter-spacing: 10px;
-}
-
-.hanged .hanged-main {
-    width: 65%;
-    padding: 5%;
-}
-.hanged .hanged-main .imgresult {
-    width: 100%;
-}
-.hanged .hanged-main .imgresult img {
-    height:50vh;
+img {
+    padding: 5px;
 }
