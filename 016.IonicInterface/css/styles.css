@@ -1,12 +1,10 @@
 h1 {
     text-align: center;
 }
-table {
-    text-align: center;
+.action {
+    background-color: aquamarine !important;
 }
-img {
-    padding: 2.5px;
-    background: #2F2F2F;
-    height: 100px;
-    width: 100px;
+.bar {
+    position: absolute;
+    bottom: 0;
 }

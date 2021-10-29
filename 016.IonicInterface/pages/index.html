@@ -13,13 +13,42 @@
 
 <body>
         <h1>Ionic</h1>
-       <!-- Default -->
-       <ion-button id="btn">Default</ion-button>
+    
+    <ion-list id="SongsList">
+        
+    </ion-list>
+    <div class="bar">
+        <ion-progress-bar id='progresiveBar'></ion-progress-bar>
+    </div>
+        
+    
+    <ion-tabs>
+        
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button id="btnanterior">
+               <ion-icon name="arrow-back-outline"></ion-icon>
+                <ion-label>Anterior</ion-label>
+            </ion-tab-button>
 
-    <ion-item>
-        <ion-label position="floating">Floating Label</ion-label>
-        <ion-input id="input"></ion-input>
-    </ion-item>
+            <ion-tab-button id="btnpausa">
+                <ion-icon name="pause-outline"></ion-icon>
+                <ion-label>Pausa</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button id="btnplay">
+                <ion-icon name="play-outline"></ion-icon>
+                <ion-label>Continuar</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button id="btnsiguiente">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+
+                <ion-label>Siguiente</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+
+    </ion-tabs>
+
 
 
 
