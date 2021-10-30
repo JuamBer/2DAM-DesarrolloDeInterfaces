@@ -1,19 +1,20 @@
 let list = document.getElementById('SongsList');
 let btnanterior = document.getElementById('btnanterior');
-let btnpausa = document.getElementById('btnpausa');
-let btnplay = document.getElementById('btnplay');
+let btnpausaplay = document.getElementById('btnpausaplay');
+let iconpausaplay = document.getElementById('iconpausaplay');
 let btnsiguiente = document.getElementById('btnsiguiente');
 let bar = document.getElementById('progresiveBar');
 
-let key = true;
+let pausaplay = true;
+let key = false;
 const fs = require('fs');
-
 let file = fs.readFileSync('db/songs.json');
 let songs = new Array();
 songs = JSON.parse(file);
 let pos = 0;
 let cont;
 let contTotal;
+let song = new Audio("../"+songs[pos].file);
 
 loadList();
 
@@ -27,8 +28,6 @@ function loadList() {
             htmlel = "<ion-item class='activated'> <ion-label>" + songs[pos].name + "</ion-label> <ion-label>" + songs[pos].group + "</ion-label> <ion-label>" + cont + "</ion-label> <ion-label><ion-icon name='musical-note-outline'></ion-icon></ion-label></ion-item>";
             list.innerHTML += htmlel;
            
-
-            minusSong();
         } else {
             htmlel = "<ion-item> <ion-label>" + songs[i].name + "</ion-label> <ion-label>" + songs[i].group + "</ion-label> <ion-label>" + songs[i].douration + "</ion-label> <ion-label></ion-label></ion-item>";
             list.innerHTML += htmlel
@@ -57,33 +56,54 @@ function reloadList() {
 }
 
 btnanterior.addEventListener('click', () => {
+    song.pause();
     pos--;
     cont = songs[pos].douration;
+    song = new Audio("../" + songs[pos].file);
+    song.play();
     reloadList();
 });
-btnpausa.addEventListener('click', () => {
-    pauseSong();
+btnpausaplay.addEventListener('click', () => {
+
+    if (pausaplay){
+        playSong();
+        iconpausaplay.name = "pause-outline";
+        pausaplay = !pausaplay;
+    }else{
+        pauseSong();
+        iconpausaplay.name = "play-outline";
+        pausaplay = !pausaplay;
+    }
+    
 });
-btnplay.addEventListener('click', () => {
-    playSong();
-});
+
 btnsiguiente.addEventListener('click', () => {
+    song.pause();
     pos++;
     cont = songs[pos].douration;
+    song = new Audio("../" + songs[pos].file);
+    song.play();
     reloadList();
 });
 function pauseSong(){
+    song.pause();
     key = false;
 }
 function playSong() {
     key = true;
+    
+    song.play();
     minusSong();
 }
 function minusSong(){
     if(cont == 0){
+       song.pause();
        pos++; 
        cont = songs[pos].douration;
+       song = new Audio("../" + songs[pos].file);
+       song.play();
        reloadList();
+       minusSong();
     }else{
         if (key) {
             cont--;

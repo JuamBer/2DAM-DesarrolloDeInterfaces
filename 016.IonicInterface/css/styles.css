@@ -5,6 +5,14 @@ h1 {
     background-color: aquamarine !important;
 }
 .bar {
-    position: absolute;
-    bottom: 0;
+    margin-top: 500px;
+}
+#progresiveBar {
+    position:absolute;
+    /*El div será ubicado con relación a la pantalla*/
+    left:0px;
+    /*A la derecha deje un espacio de 0px*/
+    right:0px;
+    /*A la izquierda deje un espacio de 0px*/
+    bottom:60px;
 }
