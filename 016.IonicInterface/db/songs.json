@@ -2,26 +2,25 @@
   {
     "name": "La Vereda De La Puerda de Atras",
     "group": "Extremoduro",
-    "douration": "20"
+    "douration": "243",
+    "file": "db/songs/LaVeredaDeLaPuertaDeAtras.mp3"
   },
   {
     "name": "Pequeña Gran Revolución",
     "group": "Izal",
-    "douration": "11"
+    "douration": "287",
+    "file": "db/songs/PequeñaGranRevolucion.mp3"
   },
   {
-    "name": "Bohemian Rapsody",
+    "name": "Bohemian Rhapsody",
     "group": "Queen",
-    "douration": "30"
-  },
-  {
-    "name": "Now We Are Free",
-    "group": "Lisa Gerrard",
-    "douration": "65"
+    "douration": "359",
+    "file": "db/songs/BohemianRhapsody.mp3"
   },
   {
     "name": "Contraespionaje",
     "group": "Love Of Lesbian",
-    "douration": "52"
+    "douration": "370",
+    "file": "db/songs/Contraespionaje.mp3"
   }
 ]
