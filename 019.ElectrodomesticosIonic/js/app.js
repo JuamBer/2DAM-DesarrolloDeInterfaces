@@ -18,13 +18,18 @@ loadTotalInformation();
 function loadOptions() {
     for (let i = 0; i < machines.length; i++) {
         console.log(machines[i]);
-        options += "<option value=" + i + ">" + machines[i].nombre + "</option>";
+        options += "<ion-select-option value=" + i + ">" + machines[i].nombre + "</ion-select-option>";
     }
 
-    select.addEventListener('change', () => {
+    select.addEventListener('ionChange', function () {
         choosenoption = select.value;
         loadInformation(choosenoption);
     });
+
+    //select.addEventListener('change', () => {
+    //    choosenoption = select.value;
+    //    loadInformation(choosenoption);
+    //});
 
     select.innerHTML = options;
 }
