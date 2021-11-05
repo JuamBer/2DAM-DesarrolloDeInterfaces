@@ -1,0 +1,17 @@
+{
+  "name": "Cartas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "JuamBer",
+  "license": "ISC",
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "electron": "^15.2.0",
+    "xel": "^0.9.10",
+    "xel-fonts": "^0.9.1"
+  }
+}

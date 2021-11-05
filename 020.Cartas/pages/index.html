@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/photon.css">
+    <link rel="stylesheet" href="../css/photon.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <meta name="xel-theme" content="../node_modules/xel/themes/vanilla.css">
+    <meta name="xel-accent-color" content="blue">
+    <meta name="xel-size" content="medium">
+    <meta name="xel-iconset" content="../node_modules/xel/iconsets/material.svg">
+    <link href="../node_modules/xel-fonts/fonts.css" rel="stylesheet">
+    </link>
+    <!--Necesitamos incluir este fichero js para xel-->
+    <script src="../node_modules/xel/xel.js" type="module"></script>
+    <title>Cartas</title>
+</head>
+
+<body>
+    <div class="window">
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane-sm sidebar">
+                    <h4 id="credito">Crédito </h4>
+                    <hr>
+                    <p>Apuesta</p>
+                    <input type="number" id="inputApuesta" class="form-control">
+                    <select id="inputPalo" class="form-control">
+                        <option>Oros</option>
+                        <option>Espadas</option>
+                        <option>Bastos</option>
+                        <option>Copas</option>
+                    </select>
+                    <hr>
+                    <button class="btn btn-large btn-positive" id="btnApostar">Apostar</button>
+                    <button class="btn btn-large btn-positive" id="btnReset">Reset</button>
+
+                </div>
+                <div class="pane">
+                    <h1>Cartas</h1>
+                    <div class="wrapper">
+                        <img src="../img/dorso.png" alt="Carta" id="img1">
+                        <img src="../img/dorso.png" alt="Carta" id="img2">
+                        <img src="../img/dorso.png" alt="Carta" id="img3">
+                        <img src="../img/dorso.png" alt="Carta" id="img4">
+                        <img src="../img/dorso.png" alt="Carta" id="img5">
+                        <img src="../img/dorso.png" alt="Carta" id="img6">
+                    </div>
+
+                    <x-notification id='notification' timeout="3000"></x-notification>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
