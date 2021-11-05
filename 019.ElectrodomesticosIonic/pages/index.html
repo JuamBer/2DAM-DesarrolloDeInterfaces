@@ -8,43 +8,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="../css/styles.css">
 
-    <title>Electrodomésticos</title>
+    <title>Electrodomésticos ionic</title>
 </head>
 
 <body>
-    <br>
-    <h1>Electrodomésticos</h1>
-    <br>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Catálogo de Electrodomésticos</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding" color="primary">
+            <h1>Selecciona un Electrodoméstico de la lista</h1>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Electrodoméstico:</ion-label>
+                    <ion-select id="select">
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+            <h2>Información del artículo</h2>
+            <ion-grid id="table">
+            </ion-grid>
+            <h2>Información Totales</h2>
+            <div id="moreinfo">
 
-
-    <ion-list>
-        <ion-list-header>
-            <ion-label>
-                Single Selection
-            </ion-label>
-        </ion-list-header>
-
-        <ion-item>
-            <ion-label>Gender</ion-label>
-            <ion-select placeholder="Select One" id="select">
-
-            </ion-select>
-        </ion-item>
-    </ion-list>
-
-    </select>
-    <div id="div">
-        <h3>Machines Information</h3>
-        <table class="table-striped" id="table">
-
-        </table>
-    </div>
-    <div>
-        <h3>Totals</h3>
-        <div id="moreinfo">
-
-        </div>
-    </div>
+            </div>
+        </ion-content>
+    </ion-app>
 
 
     <script src="../js/app.js"></script>

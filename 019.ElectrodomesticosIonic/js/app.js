@@ -26,39 +26,35 @@ function loadOptions() {
         loadInformation(choosenoption);
     });
 
-    //select.addEventListener('change', () => {
-    //    choosenoption = select.value;
-    //    loadInformation(choosenoption);
-    //});
-
     select.innerHTML = options;
 }
 
 
 function loadInformation(i) {
-    let tr = `
-        <tr>
-            <td>Description: </td>
-            <td>${machines[i].nombre}</td>
-        </tr>
-        <tr>
-            <td> Cost Price: </td> 
-            <td> ${machines[i].precioCoste} </td> 
-        </tr>
-        <tr>
-            <td> Shelling Price: </td> 
-            <td>${machines[i].precioVenta}</td>
-        </tr>
-        <tr>
-            <td> Actual Stock: </td> 
-            <td>${machines[i].stockActual}</td>
-        </tr>    
-        <tr>    
-            <td> Min Stock: </td> 
-            <td>${machines[i].stockMin}</td>
-        </tr>
+
+    let e = `
+        <ion-row>
+            <ion-col>Description: </ion-col>
+            <ion-col>${machines[i].nombre}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col> Cost Price: </ion-col>
+            <ion-col> ${machines[i].precioCoste} </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col> Shelling Price: </ion-col> 
+            <ion-col>${machines[i].precioVenta}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col> Actual Stock: </ion-col> 
+            <ion-col>${machines[i].stockActual}</ion-col>
+        </ion-row>    
+        <ion-row>    
+            <ion-col> Min Stock: </ion-col> 
+            <ion-col>${machines[i].stockMin}</ion-col>
+        </ion-row>
     `;
-    table.innerHTML = tr;
+    table.innerHTML = e;
 
 }
 
