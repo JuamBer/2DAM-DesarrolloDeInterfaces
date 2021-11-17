@@ -1,0 +1,30 @@
+[
+  {
+    "id": 0,
+    "voter": "boris"
+  },
+  {
+    "id": 9,
+    "voter": "Juan"
+  },
+  {
+    "id": 9,
+    "voter": "Pepe"
+  },
+  {
+    "id": 0,
+    "voter": "Pepe"
+  },
+  {
+    "id": 1,
+    "voter": "Algo"
+  },
+  {
+    "id": 9,
+    "voter": "Ivan"
+  },
+  {
+    "id": 4,
+    "voter": "E"
+  }
+]
