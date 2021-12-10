@@ -1,0 +1,30 @@
+[
+    {
+        "pregunta": "pregunta 1",
+        "rA": "respuesta a",
+        "rB": "respuesta b",
+        "rC": "respuesta c",
+        "correcta": "b"
+    },
+    {
+        "pregunta": "pregunta 2",
+        "rA": "respuesta a",
+        "rB": "respuesta b",
+        "rC": "respuesta c",
+        "correcta": "b"
+    },
+    {
+        "pregunta": "pregunta 3",
+        "rA": "respuesta a",
+        "rB": "respuesta b",
+        "rC": "respuesta c",
+        "correcta": "a"
+    },
+    {
+        "pregunta": "pregunta 4",
+        "rA": "respuesta a",
+        "rB": "respuesta b",
+        "rC": "respuesta c",
+        "correcta": "a"
+    }
+]
