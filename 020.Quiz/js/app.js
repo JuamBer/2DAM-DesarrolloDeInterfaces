@@ -16,8 +16,8 @@ function corregirTest(test){
     for (let i = 0; i < test.length; i++) {
 
         let check1 = document.getElementById("rA"+i).checked
-        let check2 = document.getElementById("rA"+i).checked
-        let check3 = document.getElementById("rA"+i).checked
+        let check2 = document.getElementById("rB"+i).checked
+        let check3 = document.getElementById("rC"+i).checked
 
         switch (test[i].correcta) {
             case "a": if (check1){aciertos++;}else{fallos++} continue;
