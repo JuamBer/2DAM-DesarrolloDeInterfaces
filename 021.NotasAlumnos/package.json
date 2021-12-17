@@ -1,0 +1,16 @@
+{
+  "name": "notasalumnos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "JuamBer",
+  "license": "ISC",
+  "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "electron": "^15.2.0",
+    "mongoose": "^6.0.13"
+  }
+}
