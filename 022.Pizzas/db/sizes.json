@@ -1,0 +1,7 @@
+{
+    "sizes": [
+        ["Small", "/img/size.png"],
+        ["Medium", "/img/size.png"],
+        ["Big", "/img/size.png"]
+    ]
+}

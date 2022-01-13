@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/photon.css">
+    <link rel="stylesheet" href="../css/photon.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Pizzas</title>
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Place your order</h1>
+        </header>
+
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+
+                    <h2>Contact Info: </h2>
+
+                    <input id="name" type="text" placeholder="Name">
+                    <input id="phone" type="text" placeholder="Phone">
+                    <input id="address" type="text" placeholder="Address">
+                </div>
+                <div class="pane">
+                    <div class="sizes">
+                        <h2>Size: </h2>
+                        <form class="form_sizes">
+                            <ul id="ul_form_sizes">
+                                
+                            </ul>
+                        </form>
+                    </div>
+
+                    <div class="masses">
+                        <h2>Mass: </h2>
+                        <form class="form_masses">
+                            <ul id="ul_form_masses">
+
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="pane">
+                    <div class="ingredients">
+                        <h2>Ingredients: </h2>
+                        <form class="form_ingredients">
+                            <ul id="ul_form_ingredients">
+
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="toolbar toolbar-footer">
+            <button class="btn btn-large btn-positive" id="btn_accept">Accept</button>
+            <button class="btn btn-large btn-positive" id="btn_cancel">Cancel</button>
+        </footer>
+    </div>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
