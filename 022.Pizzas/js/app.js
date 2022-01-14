@@ -99,7 +99,7 @@ function generatePDF(){
         </html>
     `;
 
-    pdf.create(content).toFile('order.pdf', (err, res) => {
+    pdf.create(content).toFile('./pdfPedidos/' + name + '-order.pdf', (err, res) => {
         if (err) {
             console.log(err);
         } else {
