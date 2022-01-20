@@ -1,9 +1,29 @@
 class Game {
-    constructor(boardSize, boats){
+    constructor(boardSize, boats, canvas){
         this.boardSize = boardSize;
         this.boats = boats;
         this.board = this.createBoard();
         this.fillBoard();
+        this.canvas = canvas;
+        this.ctx = this.canvas.getContext('2d');
+        this.printBoats();
+    }
+
+    printBoats(){
+        let sizeOne = (this.canvas.width-5 / this.boardSize-5);
+        for (let i = 0; i < this.boardSize; i++) {
+            for (let j = 0; j < this.boardSize; j++) {
+                if (this.board[i][j] == "Mar") {
+                    this.ctx.fillStyle = 'blue';
+                    this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+
+                }else{
+                    this.ctx.fillStyle = 'green';
+                    this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+                }
+            }
+        }
+        
     }
 
     getCoords() {
@@ -25,7 +45,8 @@ class Game {
         let newx;
         let newy;
         let boatSize = boat.size - 1;
-        
+        let isPosible = true;
+
         switch (direction) {
             case 1:
                 newx = coords.x;
@@ -41,19 +62,20 @@ class Game {
                 break;
             case 4:
                 newx = coords.x - boatSize;
-                newy = coords.y ;
+                newy = coords.y;
                 break;
         }
-        if (((newx || newy) > this.boardSize) || ((newx || newy) < 0)) {
-            return false;
-        } else {
-            for (let x = coords.x; x <= newx; x++) {
-                for (let y = coords.y; y <= newy; y++) {
+
+        for (let x = coords.x; x <= newx; x++) {
+            for (let y = coords.y; y <= newy; y++) {
+                if (((x || y) > this.boardSize) || ((x || y) < 0)) {
                     if (this.board[x][y] != "Mar") {
-                        return false;
+                        isPosible = false;
                     }
                 }
             }
+        }
+        if (isPosible) {
             for (let x = coords.x; x <= newx; x++) {
                 for (let y = coords.y; y <= newy; y++) {
                     this.board[x][y] = boat.id;
@@ -61,26 +83,33 @@ class Game {
                 }
             }
             return true;
+        } else {
+            return false;
         }
+
     }
 
     placeTheBoat(boat,i) {
-        console.log("intento numero: "+i);
+        console.log("intento numero: " + i);
         console.log(boat);
-        const coords = this.getCoords();
-        const direction = this.getDirection();
+
+        let coords = this.getCoords();
+        let direction = this.getDirection();
+
         if (!(this.isPosibleToPlaceTheBoat(boat, coords, direction))) {
             i++;
             console.log("not is posible");
-            this.placeTheBoat(boat,i);
-        }else{
+            this.placeTheBoat(boat, i);
+        } else {
             console.log("is posible");
         }
+        
     }
 
     fillBoard() {
         for (let i = 0; i < this.boats.length; i++) {
             for (let j = 0; j < this.boats[i].length; j++) {
+                console.log("i: "+i+"; j: "+j);
                 this.placeTheBoat(this.boats[i][j],1);
             }
         }

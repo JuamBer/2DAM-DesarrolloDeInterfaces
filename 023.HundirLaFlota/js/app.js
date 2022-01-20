@@ -1,12 +1,7 @@
 //obtener el elemento canvas
 const canvas = document.getElementById('myCanvas');
 //referenciar el context, en este caso 2d (tb existe 3d)
-const ctx = canvas.getContext('2d');
-//establecer color de relleno
-ctx.fillStyle = 'green';
-//dibujar un rectángulo que empieza en 10,10 y tamaño en 150,100
-//coordenadas relativas al canvas
-ctx.fillRect(10, 10, 150, 100);
+
 
 
 import { Boat } from './Boat.js';
@@ -19,7 +14,7 @@ const boats = [
     [
         new Boat("1_Submarino", "Submarino", 2),
         new Boat("2_Submarino", "Submarino", 2),
-        new Boat("3_Submarino", "Submarino", 2),
+        new Boat("3_Submarino", "Submarino", 2)
     ],
     [
         new Boat("1_Buque", "Buque", 3),
@@ -30,6 +25,8 @@ const boats = [
     ]
 ];
 
-let game = new Game(10,boats);
-
+let game = new Game(10, boats, canvas);
 console.log(game)
+
+
+
