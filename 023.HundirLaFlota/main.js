@@ -35,8 +35,8 @@ function createMenus(){
 function createWindow() {
     const masInfo = new BrowserWindow({
         title:'Hundir La Flota',
-        width:700,
-        height:500
+        width:1600,
+        height:800
     });
     const sobrePrograma = new BrowserWindow({
         title: 'Sobre El Programa',

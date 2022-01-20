@@ -1,9 +1,50 @@
-.HundirLaFlota{
+header {
+    background: #d4d4d6;
+    height: 75px;
     width: 100%;
     display: flex;
     justify-content: center;
+}
+.HundirLaFlota{
+    width: 100%;
+    display: flex;
+    height: calc( 100vh - 150px );
+    justify-content: center;
+    align-items: center;
     align-items: center;
 }
 #myCanvas {
     border: 3px solid #000000;
+}
+
+footer {
+    background: #d4d4d6;
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    position: absolute;
+    bottom: 0%;
+}
+h3 {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background: #dd4545;
+    color:white;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: none;
+}
+button:hover {
+    cursor:pointer;
+    background: #f82424;
 }

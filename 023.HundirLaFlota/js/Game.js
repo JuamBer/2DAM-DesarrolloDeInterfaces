@@ -1,68 +1,80 @@
+import { Boat } from './Boat.js';
+import { Box } from './Box.js';
+import { Sea } from './Sea.js';
 class Game {
     constructor(boardSize, boats, canvas, intentos) {
         this.boardSize = boardSize;
         this.boats = boats;
-        this.board = this.createBoard();
-        this.fillBoard();
         this.canvas = canvas;
+        this.ctx = this.canvas.getContext('2d');
         this.numIntentos = 0;
         this.intentos = intentos;
-        this.ctx = this.canvas.getContext('2d');
-        this.printBoard();
+        this.impactsToWin = 0;
+
+
+        this.board = this.createBoard();
+        this.fillBoard();
+
+        //MODO DE JUEGO NORMAL
+            this.printBoard();
+
+        //SI QUIERES SABER DÓNDE ESTÁN DESCOMENTA ESTA LINEA
+            //this.printResolvedBoard();
+
         this.detectarClick();
     }
-    detectarClick(){
-        let sizeOne = (this.canvas.width / this.boardSize);
 
-        this.canvas.addEventListener('click', (e) => {
-            this.numIntentos++;
-            this.intentos.innerHTML = "Intentos: "+ this.numIntentos;
+    reset() {
+        this.numIntentos = 0;
+        this.impactsToWin = 0;
+        this.intentos.innerHTML = "Intentos: " + this.numIntentos;
+        this.board = this.createBoard();
+        this.fillBoard();
+        //MODO DE JUEGO NORMAL
+        this.printBoard();
 
-            let x = e.offsetX;
-            let y = e.offsetY;
-
-            for (let i = 0; i < this.boardSize; i++) {
-                for (let j = 0; j < this.boardSize; j++) {
-                    if (((x > (i * sizeOne)) && (x < (i * sizeOne) + sizeOne))) {
-                        if (((y > (j * sizeOne)) && (y < (j * sizeOne) + sizeOne))){
-                            let color = "rgb(51, 153, 255)";
-
-                            console.log("this.board[i][j]" + this.board[i][j].name)
-                            if (this.board[i][j].includes("Lancha")) {
-                                color = "rgb(255, 102, 102)";
-                            }
-                            if (this.board[i][j].includes("Submarino")) {
-                                color = "rgb(255, 102, 0)";
-                            }
-                            if (this.board[i][j].includes("Buque")) {
-                                color = "rgb(204, 51, 153)";
-                            }
-                            if (this.board[i][j].includes("Portaaviones")) {
-                                color = "rgb(255, 0, 0)";
-                            }
-
-
-                            this.ctx.fillStyle = color;
-
-                            this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
-                        }
-                    }
-                }
-
-            }
-        });
+        //SI QUIERES SABER DÓNDE ESTÁN DESCOMENTA ESTA LINEA
+        //this.printResolvedBoard();
     }
 
-    printBoard(){
-        let sizeOne = (this.canvas.width / this.boardSize);
+
+
+    createBoard() {
+        let board = new Array(this.boardSize);
+        for (let i = 0; i < this.boardSize; i++) {
+            board[i] = new Array(this.boardSize);
+        }
+
         for (let i = 0; i < this.boardSize; i++) {
             for (let j = 0; j < this.boardSize; j++) {
-                this.ctx.fillStyle = 'rgb(102, 153, 153)';
-                this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+                board[i][j] = new Box(i, j, new Sea("Mar", "rgb(51, 153, 255)"));
             }
         }
-        
+        return board;
     }
+
+
+    fillBoard() {
+        for (let i = 0; i < this.boats.length; i++) {
+            for (let j = 0; j < this.boats[i].length; j++) {
+                this.placeTheBoat(this.boats[i][j]);
+            }
+        }
+    }
+
+
+
+    placeTheBoat(boat) {
+        let coords = this.getCoords();
+        let direction = this.getDirection();
+
+        if (!(this.isPosibleToPlaceTheBoat(boat, coords, direction))) {
+            this.placeTheBoat(boat);
+        }
+
+    }
+
+
 
     getCoords() {
         let x = Math.floor(Math.random() * (this.boardSize));
@@ -74,10 +86,14 @@ class Game {
         return coords;
     };
 
+
+
     getDirection() {
         let direction = Math.floor(Math.random() * 4) + 1;
         return direction;
     };
+
+
 
     isPosibleToPlaceTheBoat(boat, coords, direction) {
         let newx;
@@ -106,8 +122,12 @@ class Game {
 
         for (let x = coords.x; x <= newx; x++) {
             for (let y = coords.y; y <= newy; y++) {
-                if (((x || y) > this.boardSize) || ((x || y) < 0)) {
-                    if (this.board[x][y] != "Mar") {
+                if ((x >= this.boardSize) || (y >= this.boardSize) || (x < 0) || (y < 0)) {
+                    isPosible = false;
+                } else {
+                    console.log(x+" "+y)
+                    let box = this.board[x][y];
+                    if (box.isBoat()) {
                         isPosible = false;
                     }
                 }
@@ -116,55 +136,106 @@ class Game {
         if (isPosible) {
             for (let x = coords.x; x <= newx; x++) {
                 for (let y = coords.y; y <= newy; y++) {
-                    this.board[x][y] = boat.id;
-                    console.log("SI")
+                    if (!((x || y) > this.boardSize) || ((x || y) < 0)) {
+                        this.board[x][y].setBoat(boat);
+                        this.impactsToWin++;
+                    }
                 }
             }
             return true;
         } else {
             return false;
         }
-
     }
 
-    placeTheBoat(boat,i) {
-        console.log("intento numero: " + i);
-        console.log(boat);
 
-        let coords = this.getCoords();
-        let direction = this.getDirection();
 
-        if (!(this.isPosibleToPlaceTheBoat(boat, coords, direction))) {
-            i++;
-            console.log("not is posible");
-            this.placeTheBoat(boat, i);
-        } else {
-            console.log("is posible");
-        }
-        
-    }
-
-    fillBoard() {
-        for (let i = 0; i < this.boats.length; i++) {
-            for (let j = 0; j < this.boats[i].length; j++) {
-                console.log("i: "+i+"; j: "+j);
-                this.placeTheBoat(this.boats[i][j],1);
-            }
-        }
-    }
-
-    createBoard() {
-        let board = new Array(this.boardSize);
-        for (let i = 0; i < this.boardSize; i++) {
-            board[i] = new Array(this.boardSize);
-        }
-
+    checkWin(){
+        let impacts = 0;
         for (let i = 0; i < this.boardSize; i++) {
             for (let j = 0; j < this.boardSize; j++) {
-                board[i][j] = "Mar";
+                if(this.board[i][j].isResolved()){
+                    if (this.board[i][j].isBoat()) {
+                        impacts++;
+                    }
+                }
             }
         }
-        return board;
+
+        if (this.impactsToWin <= impacts){
+            console.log("win");
+            this.ctx.fillStyle = "black";
+            this.ctx.font = "bold 40px sans-serif";
+            this.ctx.textAlign = "center";
+            this.ctx.fillText("¡ Has Ganado !", this.canvas.width / 2, this.canvas.height / 2);
+        }
+    }
+
+
+
+    detectarClick(){
+        this.canvas.addEventListener('click', (e) => {
+            let sizeOne = (this.canvas.width / this.boardSize);
+
+            
+            this.intentos.innerHTML = "Intentos: " + this.numIntentos;
+
+            let x = e.offsetX;
+            let y = e.offsetY;
+
+            for (let i = 0; i < this.boardSize; i++) {
+                for (let j = 0; j < this.boardSize; j++) {
+                    if (((x > (i * sizeOne)) && (x < (i * sizeOne) + sizeOne))) {
+                        if (((y > (j * sizeOne)) && (y < (j * sizeOne) + sizeOne))) {
+                            if (!this.board[i][j].isResolved()) {
+                                this.numIntentos++;
+                            }
+                            this.board[i][j].resolveBox();
+                            
+                            this.ctx.fillStyle = this.board[i][j].getItem().color;
+
+                            this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+                        }
+                    }
+                }
+
+            }
+            this.checkWin();
+            console.log(this);
+        });
+    }
+
+
+
+    printResolvedBoard(){
+        let sizeOne = (this.canvas.width / this.boardSize);
+        
+        for (let i = 0; i < this.boardSize; i++) {
+            for (let j = 0; j < this.boardSize; j++) {
+                let color;
+                let box = this.board[i][j];
+                console.log(box.isBoat())
+                if (box.isBoat()) {
+                    color = "rgb(255, 24, 102)";
+                }else{
+                    color = "rgb(102, 153, 153)";
+                }
+
+                this.ctx.fillStyle = color;
+                this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+            }
+        } 
+    }
+
+
+    printBoard(){
+        let sizeOne = (this.canvas.width / this.boardSize);
+        for (let i = 0; i < this.boardSize; i++) {
+            for (let j = 0; j < this.boardSize; j++) {
+                this.ctx.fillStyle = 'rgb(102, 153, 153)';
+                this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+            }
+        }
     }
 }
 export { Game };
