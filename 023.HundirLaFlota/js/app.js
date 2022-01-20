@@ -1,11 +1,9 @@
-//obtener el elemento canvas
-const canvas = document.getElementById('myCanvas');
-//referenciar el context, en este caso 2d (tb existe 3d)
-
-
-
 import { Boat } from './Boat.js';
 import { Game } from './Game.js';
+
+const canvas = document.getElementById('myCanvas');
+const intentos = document.getElementById('intentos');
+const reiniciar = document.getElementById('reiniciar');
 
 const boats = [
     [
@@ -25,8 +23,13 @@ const boats = [
     ]
 ];
 
-let game = new Game(10, boats, canvas);
-console.log(game)
+let game = new Game(10, boats, canvas, intentos);
+console.log(game);
+reiniciar.addEventListener("click", () => {
+    game = new Game(10, boats, canvas, intentos);
+    console.log(game);
+});
+
 
 
 

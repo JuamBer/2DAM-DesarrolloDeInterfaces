@@ -1,0 +1,9 @@
+.HundirLaFlota{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#myCanvas {
+    border: 3px solid #000000;
+}

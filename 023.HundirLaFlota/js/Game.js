@@ -1,26 +1,64 @@
 class Game {
-    constructor(boardSize, boats, canvas){
+    constructor(boardSize, boats, canvas, intentos) {
         this.boardSize = boardSize;
         this.boats = boats;
         this.board = this.createBoard();
         this.fillBoard();
         this.canvas = canvas;
+        this.numIntentos = 0;
+        this.intentos = intentos;
         this.ctx = this.canvas.getContext('2d');
-        this.printBoats();
+        this.printBoard();
+        this.detectarClick();
+    }
+    detectarClick(){
+        let sizeOne = (this.canvas.width / this.boardSize);
+
+        this.canvas.addEventListener('click', (e) => {
+            this.numIntentos++;
+            this.intentos.innerHTML = "Intentos: "+ this.numIntentos;
+
+            let x = e.offsetX;
+            let y = e.offsetY;
+
+            for (let i = 0; i < this.boardSize; i++) {
+                for (let j = 0; j < this.boardSize; j++) {
+                    if (((x > (i * sizeOne)) && (x < (i * sizeOne) + sizeOne))) {
+                        if (((y > (j * sizeOne)) && (y < (j * sizeOne) + sizeOne))){
+                            let color = "rgb(51, 153, 255)";
+
+                            console.log("this.board[i][j]" + this.board[i][j].name)
+                            if (this.board[i][j].includes("Lancha")) {
+                                color = "rgb(255, 102, 102)";
+                            }
+                            if (this.board[i][j].includes("Submarino")) {
+                                color = "rgb(255, 102, 0)";
+                            }
+                            if (this.board[i][j].includes("Buque")) {
+                                color = "rgb(204, 51, 153)";
+                            }
+                            if (this.board[i][j].includes("Portaaviones")) {
+                                color = "rgb(255, 0, 0)";
+                            }
+
+
+                            this.ctx.fillStyle = color;
+
+                            this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+                        }
+                    }
+                }
+
+            }
+        });
     }
 
-    printBoats(){
-        let sizeOne = (this.canvas.width-5 / this.boardSize-5);
+    printBoard(){
+        let sizeOne = (this.canvas.width / this.boardSize);
         for (let i = 0; i < this.boardSize; i++) {
             for (let j = 0; j < this.boardSize; j++) {
-                if (this.board[i][j] == "Mar") {
-                    this.ctx.fillStyle = 'blue';
-                    this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
-
-                }else{
-                    this.ctx.fillStyle = 'green';
-                    this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
-                }
+                this.ctx.fillStyle = 'rgb(102, 153, 153)';
+                this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
             }
         }
         

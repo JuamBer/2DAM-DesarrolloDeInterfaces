@@ -10,20 +10,21 @@
 </head>
 
 <body>
-    <div class="window">
-        <header class="toolbar toolbar-header">
-            <h1 class="title">Header</h1>
-        </header>
-        <canvas 
-            id="myCanvas" 
-            width="550" 
-            height="450" 
-            style="border:1px solid #000000;">
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Hundir La Flota</h1>
+    </header>
+    
+    <div class="HundirLaFlota">
+        <canvas id="myCanvas" width="500" height="500">
         </canvas>
-        <footer class="toolbar toolbar-footer">
-            <h1 class="title">Footer</h1>
-        </footer>
     </div>
+    
+
+    <footer class="toolbar toolbar-footer">
+        <h3 id="intentos"></h3>
+        <button id="reiniciar" class="btn btn-negative">Reiniciar</button>
+    </footer>
+   
     <script type="module" src="../js/app.js"></script>
 </body>
 
