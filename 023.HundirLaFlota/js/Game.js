@@ -2,7 +2,7 @@ import { Boat } from './Boat.js';
 import { Box } from './Box.js';
 import { Sea } from './Sea.js';
 class Game {
-    constructor(boardSize, boats, canvas, intentos) {
+    constructor(boardSize, boats, canvas, intentos, msg) {
         this.boardSize = boardSize;
         this.boats = boats;
         this.canvas = canvas;
@@ -10,7 +10,8 @@ class Game {
         this.numIntentos = 0;
         this.intentos = intentos;
         this.impactsToWin = 0;
-
+        this.msg;
+        this.HTMLmsg = msg;
 
         this.board = this.createBoard();
         this.fillBoard();
@@ -28,11 +29,12 @@ class Game {
         this.numIntentos = 0;
         this.impactsToWin = 0;
         this.intentos.innerHTML = "Intentos: " + this.numIntentos;
+        this.msg = "";
         this.board = this.createBoard();
         this.fillBoard();
         //MODO DE JUEGO NORMAL
         this.printBoard();
-
+        
         //SI QUIERES SABER DÓNDE ESTÁN DESCOMENTA ESTA LINEA
         //this.printResolvedBoard();
     }
@@ -98,7 +100,7 @@ class Game {
     isPosibleToPlaceTheBoat(boat, coords, direction) {
         let newx;
         let newy;
-        let boatSize = boat.size - 1;
+        let boatSize = boat.getSize() - 1;
         let isPosible = true;
 
         switch (direction) {
@@ -189,12 +191,25 @@ class Game {
                         if (((y > (j * sizeOne)) && (y < (j * sizeOne) + sizeOne))) {
                             if (!this.board[i][j].isResolved()) {
                                 this.numIntentos++;
+                                if (this.board[i][j].isBoat()){
+                                    this.board[i][j].getItem().impact();
+                                    if (this.board[i][j].getItem().isDestroyed()) {
+                                        this.msg = "¡ " + this.board[i][j].getItem().getName() + " Hundido !";
+                                    }else{
+                                        this.msg = "¡ " + this.board[i][j].getItem().getName() + " Tocado !";
+                                    }
+                                }else{
+                                    this.msg = "¡ Mar !";
+                                }
+                            }else{
+                                this.msg = "¡ Ataca a Alguna Casilla !";
                             }
-                            this.board[i][j].resolveBox();
-                            
-                            this.ctx.fillStyle = this.board[i][j].getItem().color;
+                            this.HTMLmsg.innerHTML = this.msg;
 
+                            this.board[i][j].resolveBox();
+                            this.ctx.fillStyle = this.board[i][j].getItem().color;
                             this.ctx.fillRect(i * sizeOne, j * sizeOne, sizeOne, sizeOne);
+                            
                         }
                     }
                 }

@@ -4,6 +4,7 @@ import { Game } from './Game.js';
 const canvas = document.getElementById('board');
 const intentos = document.getElementById('intentos');
 const reiniciar = document.getElementById('reiniciar');
+const msg = document.getElementById('msg');
 
 const boats = [
     [
@@ -23,7 +24,7 @@ const boats = [
     ]
 ];
 let game;
-game = new Game(10, boats, canvas, intentos);
+game = new Game(10, boats, canvas, intentos, msg);
 
 reiniciar.addEventListener("click", () => {
     game.reset();
