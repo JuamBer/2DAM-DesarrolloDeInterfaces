@@ -1,25 +1,25 @@
 [{
-    "dni": "11111111",
+    "img": "0.png",
     "name": "cliente1",
     "phone": "9111111"
 }, {
-    "dni": "22222222",
+    "img": "1.png",
     "name": "cliente2",
     "phone": "9222222"
 }, {
-    "dni": "33333333",
+    "img": "2.png",
     "name": "cliente3",
     "phone": "9333333"
 }, {
-    "dni": "72345672",
+    "img": "3.png",
     "name": "cliente",
     "phone": "9111111"
 }, {
-    "dni": "72345672",
+    "img": "4.png",
     "name": "cliente",
     "phone": "9111111"
 }, {
-    "dni": "72345672",
+    "img": "5.png",
     "name": "cliente",
     "phone": "9111111"
 }]
