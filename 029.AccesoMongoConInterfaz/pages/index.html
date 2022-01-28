@@ -9,7 +9,36 @@
 </head>
 
 <body>
-    <p>Abre la consola</p>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <!--panel imágenes-->
+                <div class="pane">
+                    <div class="wrapper" id="wrapper">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="searchBook">
+            <input type="text" id="searchBook_title" placeholder="title"/>
+            <button id="searchBook_title_button">Search</button>
+            <input type="text" id="searchBook_author" placeholder="author" />
+            <button id="searchBook_author_button">Search</button>
+        </div>
+        <div class="insertBook">
+            <input type="text" id="insertBook_title" placeholder="title" />
+            <input type="text" id="insertBook_author" placeholder="author" />
+            <input type="text" id="insertBook_img" placeholder="img" />
+            <button id="insertBook_button">Insert</button>
+        </div>
+        <footer class="toolbar toolbar-footer">
+            <button class="btn btn-default" id="search">Buscar</button>
+            <button class="btn btn-default" id="newBook">Nuevo Libro</button>
+            <button class="btn btn-default" id="all">Todos</button>
+        </footer>
+    </div>
 
     <script src="../js/app.js"></script>
 </body>
