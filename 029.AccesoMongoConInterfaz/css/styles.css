@@ -1,11 +1,41 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+header {
+    background: rgb(247, 151, 41);
+    padding: 2%;
+    width: 96%;
+    text-align: center;
+}
+header h3{
+    font-size: 30px;
+}
+footer {
+    background: rgb(247, 151, 41);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer button{
+    background: rgb(255, 253, 149);
+    padding: 1%;
+    margin: 2%;
+    border-radius: 5px;
+    border: none;
+}
+footer button:hover {
+    cursor: pointer;
+    background: rgb(187, 122, 49);
+    transition-duration: 0.25s;
+}
 .wrapper {
-    border: 2px solid #5c5a5a;
+    padding-bottom: 15%;
     border-radius: 5px;
     background-color: #fffffe;
 }
 
 .wrapper>div {
-    border: 2px solid #8a8585;
     border-radius: 5px;
     background-color: #ffffff;
     padding: 1em;
@@ -20,4 +50,52 @@
 .wrapper img {
     width: 150px;
     height: 250px;
+}
+.modal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 2%;
+    border: #5c5a5a solid 1.5px;
+    border-radius: 5px;
+}
+.modal button {
+    width: 100%;
+    padding: 10px;
+    background: rgb(255, 160, 51);
+    color:white;
+    border:none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.modal button:hover {
+    cursor: pointer;
+    background: rgb(187, 122, 49);
+    transition-duration: 0.25s;
+}
+.modal .divisor {
+    width: 100%;
+    height: 1px;
+    background: none;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.modal {
+    position: fixed;
+    top:0px;
+    padding: 5%;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    width: 25%;
+    margin-left: calc(75% - 10%);
+    height: calc(100vh - 40vh);
+    background: rgba(255, 236, 214, 0.8);
+    z-index: 9;
+}
+.searchBook {
+    display: none;
+}
+.insertBook {
+    display: none;
 }

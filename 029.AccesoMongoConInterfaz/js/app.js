@@ -1,5 +1,8 @@
 'use strict';
 const mongoose = require('mongoose');
+const fs = require('fs');
+
+
 const search = document.getElementById("search");
 const newBook = document.getElementById("newBook");
 const all = document.getElementById("all");
@@ -33,21 +36,72 @@ let librosSchema = new mongoose.Schema({
     }
 });
 
-let Libro = mongoose.model('libros', librosSchema);
-//home(Libro);
+let Book = mongoose.model('libros', librosSchema);
+home(Book);
 search.addEventListener('click', () => {
-    searchBook();
+    searchBook(Book);
 });
 all.addEventListener('click', () => {
-    home(Libro);
+    home(Book);
 });
 newBook.addEventListener('click', () => {
-    addNewBook(Libro);
+    addNewBook(Book);
 });
-function searchBook() {
+function searchBook(Book) {
+    const searchBook = document.getElementById("searchBook");
+    const insertBook = document.getElementById("insertBook");
+    searchBook.style.display = "inline";
+    insertBook.style.display = "none";
+    console.log("searchBook")
+
+    const searchBook_title = document.getElementById("searchBook_title");
+    const searchBook_title_button = document.getElementById("searchBook_title_button");
+    const searchBook_author = document.getElementById("searchBook_author");
+    const searchBook_author_button = document.getElementById("searchBook_author_button");
+
+    searchBook_title_button.addEventListener('click', () => {
+        console.log("searchBook_title_button")
+        const title = searchBook_title.value;
+
+        const selector = {
+            "title": {
+                $regex: title,
+                $options: "i"
+            }
+        }
+
+        let p1 = Book.find(selector).then(resultado => {
+            printBooks(resultado);
+        }).catch(error => {
+            console.log("ERROR en find");
+        });
+    });
+
+    searchBook_author_button.addEventListener('click', () => {
+        const author = searchBook_author.value;
+        
+        const selector = {
+            "author": {
+                $regex: author,
+                $options: "i"
+            }
+        }
+
+        let p1 = Book.find(selector).then(resultado => {
+            printBooks(resultado);
+        }).catch(error => {
+            console.log("ERROR en find");
+        });
+    });
+
     
 }
-function addNewBook() {
+function addNewBook(Book) {
+    const searchBook = document.getElementById("searchBook");
+    const insertBook = document.getElementById("insertBook");
+    searchBook.style.display = "none";
+    insertBook.style.display = "inline";
+    
     const insertBook_title = document.getElementById("insertBook_title");
     const insertBook_author = document.getElementById("insertBook_author");
     const insertBook_img = document.getElementById("insertBook_img");
@@ -56,13 +110,30 @@ function addNewBook() {
     insertBook_button.addEventListener('click', ()=>{
         const title = insertBook_title.value;
         const author = insertBook_author.value;
-        const img = insertBook_img.value;
+        const img = insertBook_img;
 
+        
         const newBook = new Book({
             title: title,
             author: author,
-            img: img
+            img: img.files[0].name
         });
+        console.dir(img);
+        try {
+            const data = fs.readFileSync(img.files[0].path, 'base64');
+
+            fs.writeFile("img/"+img.files[0].name, data, 'base64', (err) => {
+                if (err)
+                    console.log(err);
+                else {
+                    console.log("File written successfully\n");
+                }
+            });
+        } catch (err) {
+            console.error(err)
+        }
+
+        
 
         let promise = newBook.save().then(resultado => {
             console.log("SAVE: \n\t", resultado);
@@ -72,6 +143,11 @@ function addNewBook() {
     });
 }
 function home(Libro) {
+    const searchBook = document.getElementById("searchBook");
+    const insertBook = document.getElementById("insertBook");
+    searchBook.style.display = "none";
+    insertBook.style.display = "none";
+
     let p1 = Libro.find().then(resultado => {
         printBooks(resultado);
     }).catch(error => {

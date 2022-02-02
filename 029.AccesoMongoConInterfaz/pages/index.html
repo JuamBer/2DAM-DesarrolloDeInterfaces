@@ -3,40 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/photon.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Crear Libros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MongoDB con Interfaz De Usuario</title>
 </head>
 
 <body>
-    <div class="window">
-        <header class="toolbar toolbar-header">
+    <div class="page">
+        <header>
+            <h3>MongoDB con Interfaz De Usuario</h3>
         </header>
-        <div class="window-content">
-            <div class="pane-group">
-                <!--panel imágenes-->
-                <div class="pane">
-                    <div class="wrapper" id="wrapper">
-                    </div>
-                </div>
+        <div class="header"></div>
+        <div class="main">
+            <div class="books">
+                <div class="wrapper" id="wrapper"></div>
             </div>
         </div>
-        <div class="searchBook">
+
+        <div class="modal searchBook" id="searchBook">
             <input type="text" id="searchBook_title" placeholder="title"/>
             <button id="searchBook_title_button">Search</button>
+            <div class="divisor"></div>
             <input type="text" id="searchBook_author" placeholder="author" />
             <button id="searchBook_author_button">Search</button>
         </div>
-        <div class="insertBook">
+        <div class="modal insertBook" id="insertBook">
             <input type="text" id="insertBook_title" placeholder="title" />
             <input type="text" id="insertBook_author" placeholder="author" />
-            <input type="text" id="insertBook_img" placeholder="img" />
+            <input type="file" id="insertBook_img" alt="img"/>
             <button id="insertBook_button">Insert</button>
         </div>
-        <footer class="toolbar toolbar-footer">
-            <button class="btn btn-default" id="search">Buscar</button>
-            <button class="btn btn-default" id="newBook">Nuevo Libro</button>
-            <button class="btn btn-default" id="all">Todos</button>
+
+        <footer class="footer">
+            <button class="btn btn-footer" id="search">Buscar</button>
+            <button class="btn btn-footer" id="newBook">Nuevo Libro</button>
+            <button class="btn btn-footer" id="all">Todos</button>
         </footer>
     </div>
 
