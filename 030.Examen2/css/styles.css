@@ -1,0 +1,16 @@
+td img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.miSidebar {
+    min-width: 30%;
+    padding: 2.5%;
+}
+.miSidebar img{
+    max-height: 300px;
+    max-width: 100%;
+}
+.title {
+    font-weight: 200;
+}

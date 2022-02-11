@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/photon.css">
+    <link rel="stylesheet" href="../css/photon.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Examen2Ev</title>
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">StarWars Characters</h1>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+                    <table class="table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody id="starwars-info">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pane-sm sidebar miSidebar">
+                    <div class="info" id="info">
+                        <img src="" alt="StarWars Info" id="img" />
+                        <h4><span class="title">Name: </span><span id="name"></span></h4>
+                        <h4><span class="title">Species: </span><span id="species"></span></h4>
+                        <h4><span class="title">Gender: </span><span id="gender"></span></h4>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <button id="btn-delete" class="btn btn-default">
+                                <span class="icon icon-minus-circled"></span>
+                            </button>
+                            <button id="btn-reload" class="btn btn-default">
+                                <span class="icon icon-arrows-ccw"></span>
+                            </button>
+                            <button id="btn-doc" class="btn btn-default">
+                                <span class="icon icon-doc-text"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="toolbar toolbar-footer">
+            <h1 class="title">Examen DI</h1>
+        </footer>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
